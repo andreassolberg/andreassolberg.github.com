@@ -1,0 +1,77 @@
+---
+layout: default
+title: Bakgrunn
+slug: bakgrunn
+---
+
+
+<div class="bs-docs-section ">
+
+	<div class="row">
+		<div class="col-md-12">
+
+			<h1 id="" class="page-header">Bakgrunn</h1>
+			
+			<p>I norsk utdanningssektor er flere forskjellige identifikatorer i bruk for å identifisere brukere eller personer i datasystemer.</p>
+
+			<p>To viktige identifikatorer er <strong>feidenavn</strong> og <strong>fødselsnummer</strong>. Hver av disse identifikatorene har noen egenskaper ved seg som har uheldige effekter som skaper unødvendige problemer.</p>
+
+
+		</div>
+	</div>
+
+
+
+	<div class="row">
+		<div class="col-md-12">
+
+			<h2 id="" class="page-header">Fødselsnummer</h2>			
+
+			<p>Fødselsnummer som et elleve-siffret tall, som inkluderer fødelsnummer, er lett både å huske, lese opp og taste inn av mennesker. Personnummeret har i endel sammenhenger blitt brukt som et slags «bevis» på hvem man er, f.eks. når man skal identifisere seg på telefon. Dette er uheldig, og er en av årsakene som har bidratt til å skape en missnøye og skepsis i befolkningen mot å bruke personnummer som identifikatorer i datasystemer.</p>
+
+			<p>Personnummeret har også en uheldig innebygget informasjonslekkasje hvor fødselsdato og kjønn kan direkte avledes, også i tilfeller der denne informasjonen ikke er nødvendig.</p>
+
+			<p>Det begrensede verdirommet til fødselsnummer (11-siffer med begresninger) gjør det umulig å skjule informasjonslekkasjene ved for eksempel å bruke en enveisfunksjon.</p>
+
+			<p>En av de største utfordringene med personnummer er at ikke alle brukere i utdanningssektoren har fått tildelt personnummer. Spesielt aktuelt er dette for gjestestudenter som akkurat nylig har kommet til Norge. Det finnes en rekke varianter av personidentifikatorer som benyttes for personer som ikke har personnummer, blandt annet D-nummer, DUFF-nummer og i tillegg noen som tildeles spesielt i utdanningssektoren (S-nummer og VGO-nummer). Mange av disse nummerene har et variabelt scope og har lignende form, noe som gjør det vanskelig å skille de fra hverandre, og når de blandes kan det potensielt skape problemer.</p>
+
+
+
+			<h2 id="" class="page-header">Feidenavn</h2>		
+
+
+			<p>Feidenavn er en identifikator satt sammen av lokalt brukernavn hos en utdanningsinstitusjon og et «realm» som typsik er domenenavnet til utdanningsinstitusjonen. «<tt>andrs@ntnu.no</tt>» er et eksempel på et feidenavn, hvor <tt>andrs</tt> er et lokalt brukernavn på NTNU.</p>
+
+			<p>Feidenavn har også innebygget informasjonslekkasje. Av feidenavnet kan man direkte avlede tilknyttet utdanningsinstitusjon. Den lokale delen kan også i mange tilfeller gi en indikasjon på personens navn (ikke alltid). Ofte vil feidenavnet også kunne avlede en epostadresse til brukeren (ikke alltid), selv når dette ikke er nødvendig. </p>
+
+			<p>At feidenavnet selv har en form som en epostadresse, og at det noen ganger tilsvarer epostadressen, men ikke alltid, kan også bidra til noe forvirring, men trolig er ikke dette et stort problem.</p>
+
+			<p>Feidenavnet er knyttet til en persons tilknytning til en enkelt utdanningsinstitusjon (høyere utdanning, skoleeier i grunnopplæringen).  En person vil samtidig kunne ha brukeridentifikatorer på flere utdanningsinstitusjoner, disse vil ikke kunne knyttes sammen. Når en person går fra en utdanningsinstitusjon til en annen, for eksempel ungdomsskole til videregående, og videregående til høyskole, så vil personen representeres med forskjellige feidenavn som ikke er knyttet sammen.</p>
+
+			<p>Et av de aller største utfordringene ved feidenavnet er dynamikken i utdanningsinstiusjoner som slår seg sammen (evnt splittes), og den etterfølgende endringen i feidenavn ofte for samtlige brukere uten noen etablert mekanisme for å oppnå kontuitet i brukerkontoene hos tjenester.</p>
+
+			<p>Når en bruker avslutter sitt undervisningsforløp hos en utdanningsinstitusjon opphører ofte brukerkontoen. Dersom det samme feidenavnet blir tildelt en annen person kanskje noen år etterpå vil det kunne få alvorlige konsekvenser. De fleste utdanningsinstitusjoner har nok etablerte gode rutiner for å aldri gjenbruke feidenavn, men mangelen på en nasjonal garanti skaper usikkerhet og risiko for tjenesteleverandører.</p>
+
+			<p>En forutsetning for at en person har fått tildelt feidenavn, er at personen har en registrert tilknytning til en institusjon i utdanningssektoren. Tjenester som har tilknyttet slike brukere, for eksempel elevers foreldre via IDporten, vil ikke kunne anvende noe feidenavn for å representere disse personene.</p>
+
+			<p>Personer som er ferdig utdannet har vært representert ved en rekke forskjellige feidenavn, men kan ikke knyttes til noen av disse etter endt studieforløp. Det kan være aktuelt for tjenester å gi personen tilgang til sine data etter at studiet er ferdig.</p>
+
+
+
+
+
+
+			<h2>Person eller rolle</h2>
+
+			<p>Tjenester i Feide kan velge om de ønsker å bruke feidenavn eller føldselsnummer for å identifisere brukere. Ved å anvende feidenavn identifiserer man implisitt brukerrollen personen har tilknyttet en utdanningsinstitusjon. I motsatt fall vil man i utgangspunktet identifisere personen (uavhengig av utdanningsinstitusjon) dersom man anvender kun personnumer. Tjenester kan ha gode grunner til å velge det ene fremfor det andre. At tjenester unnlater å ta stilling til om de identifiserer personer eller brukerrollen kan få noen uheldige konsekvenser.</p>
+
+			<p>Dersom man (i fremtiden) ser for seg en integrasjon mellom IDporten og Feide Connect, vil man måtte forholde seg til at IDporten kun kan identifisere personer uten tilknytning til institusjon.</p>
+
+
+
+		</div>
+	</div>
+
+
+</div>
+

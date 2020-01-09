@@ -1,0 +1,73 @@
+---
+layout: home
+title: piiu
+---
+
+
+<div class="uninett-color-white">
+
+	<div class="bs-docs-header" id="content">
+	  <div class="container">
+
+		<h1 class="bs-docs-featurette-title">piiu</h1>
+		<p class="lead">Personlig identifikator i utdanningssektoren</p>
+		 
+	  </div>
+	</div>
+
+
+	<div class="container ">
+
+
+
+		<div class="row">
+
+			<div class="bs-docs-section col-md-12">
+				
+
+				<div class="bs-callout bs-callout-danger" id="">
+					<h4>Et konsept som er under arbeid</h4>
+					<p>piiu er <strong>kun</strong> en idéskisse på dette stadiet. Med dette ønsker vi å initiere (en ny) diskusjon rundt og kanskje videre arbeid med ny personlig identifikator i utdanningssektoren.</p>
+					<p>Arbeidet vil bli presentert på <a href="https://www.uninett.no/konferanseweb-uninett-teknisksamling-april-2016">UNINETT teknisk samling</a> (tirsdag 19. til torsdag 21. april 2016 i Trondheim) <strong>Meld deg på!</strong></p>
+				</div>
+
+
+<!--
+
+				<p>This site is so far just a skeleton. Please return back later on...</p>
+
+
+				<p>UNINETT resources on usage of OAuth 2.0:</p>
+
+				<ul class="uninett-ul">
+					<li class="uninett-ul-li"><a href="/bestpractice/">OAuth 2.0 Best Practice</a></li>
+					<li class="uninett-ul-li"><a href="/jso/">JSO - OAuth 2.0 Javascript Library</a></li>
+					<li class="uninett-ul-li"><a href="/widgets/">Federated Widgets</a></li>
+					<li class="uninett-ul-li"><a href="/openid/">About OpenID Connect</a></li>
+				</ul>
+
+
+
+
+				<p>If you are delivering services to educational users in Norway, you may want to check out:</p>
+
+
+				<ul class="uninett-ul">
+					<li class="uninett-ul-li"><a href="http://feideconnect.no">UNINETT Connect</a></li>
+				</ul>
+
+
+
+-->
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+	</div>
+</div>

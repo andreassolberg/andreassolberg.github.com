@@ -1,0 +1,241 @@
+---
+layout: default
+title: Protokoll
+slug: protokoll
+---
+
+
+<div class="bs-docs-section">
+
+	<div class="row">
+		<div class="col-md-12">
+
+			<h1 id="fedwidgets" class="page-header">Protokoll</h1>
+
+
+
+			<h2>Oversettelse fra en identifiaktor til en annen</h2>
+			
+			<p>En klient vil vite hvilke UH-NIS UID som er i bruk for en spesifikk Feide-bruker:</p>
+
+
+<p>Forespørsel:</p>
+
+{% highlight json %}
+{
+	"query": "feide:andreas@uninett.no"
+}
+{% endhighlight %}
+
+<p>Svar:</p>
+
+{% highlight json %}
+[
+	{
+		"pri": "uuid:ccebc6d0-74f9-4114-b73d-f4be9309ed5c",
+		"sec": ["feide:andreas@uninett.no", "uhnis-uid:3928"]
+	}
+]
+{% endhighlight %}
+
+
+
+<p>Forespørsel for å liste ut flere brukere, og filtrere kun uid i svaret</p>
+
+{% highlight json %}
+{
+	"query": ["feide:andreas@uninett.no", "feide:olavm@uninett.no", "feide:larsk@uninett.no"],
+	"filter": {"sec": ["feide", "uhnis-uid"]}
+}
+{% endhighlight %}
+
+<p>Svar:</p>
+
+{% highlight json %}
+[
+	{"sec": ["feide:andreas@uninett.no", "uhnis-uid:3928"]},
+	{"sec": ["feide:olavm@uninett.no", "uhnis-uid:2837"]},
+	{"sec": ["feide:larsk@uninett.no", "uhnis-uid:1999"]}
+]
+{% endhighlight %}
+
+
+
+
+<p>Nødvendige klientrettigheter for å kunne gjøre denne operasjonen.</p>
+
+{% highlight json %}
+{
+	"read": ["feide", "uhnis-uid"],
+	"merge": null,
+	"assign": ["uhnis-uid"]
+}
+{% endhighlight %}
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Utstede identifikatorer</h2>
+
+<p>En klient som er ansvarlig for å utstede <tt>uhnis-uid</tt>-identifikatorer.</p>
+
+<p>Forespørsel om å tilordne en uid til en gitt bruker.</p>
+
+{% highlight json %}
+{
+	"query": "feide:niels@uninett.no",
+	"assign": ["uhnis-uid:5338"]
+}
+{% endhighlight %}
+
+<p>Svar:</p>
+
+{% highlight json %}
+{
+	"pri": "uuid:901799a8-cadc-4b05-9d04-f5460507f6d8",
+	"sec": ["feide:niels@uninett.no", "uhnis-uid:5338"]
+}
+{% endhighlight %}
+
+
+
+
+
+
+
+<h2>Slå sammen identiteter</h2>
+
+<p>Forespørsel om at to identifikatorer til høerer samme person. Use case: sammenslåing av institusjoner:</p>
+
+{% highlight json %}
+{
+	"merge": ["feide:ola123@hist.no", "feide:ola.normann@ntnu.no"]
+}
+{% endhighlight %}
+
+<p>Svar:</p>
+
+{% highlight json %}
+{
+	"pri": "uuid:d82b94a2-7b6e-4cc2-ada1-b044feb1f2d6",
+	"sec": ["feide:ola123@hist.no", "feide:ola.normann@ntnu.no"]
+}
+{% endhighlight %}
+
+
+
+
+
+
+
+<!--
+
+
+			<p>Klienter vil være konfigurert med forskjellige rettigheter i forhold til uthenting og innmaint av data i ID-registeret.</p>
+
+
+			<h2>Oppslag av enkeltinnslag</h2>
+
+			<p>Oppslag av et helt innslag for en piiu identfikator.</p>
+
+{% highlight http %}
+GET /registry/piiu/f2759dad-5d19-4e29-b385-2d91d3d77fcb HTTP/1.1
+Host: idmanager.example.org
+Authorization: Bearer 24ccfc52-2037-44a5-88f5-20572e076ca1
+{% endhighlight %}
+
+{% highlight http %}
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8 
+
+[
+	{
+		"primary"   : "piiu:f2759dad-5d19-4e29-b385-2d91d3d77fcb",
+		"secondary" : [
+			"feide:andreas@uninett.no",
+			"nin:10108012345"
+		]
+	}
+]
+{% endhighlight %}
+	
+
+
+
+			<h2>Batch-oppslag</h2>
+
+
+{% highlight http %}
+POST /registry/mappings HTTP/1.1
+Host: idmanager.example.org
+Authorization: Bearer 24ccfc52-2037-44a5-88f5-20572e076ca1
+Content-Type: application/json; charset=utf-8 
+
+[
+	[
+		"feide:andreas@uninett.no",
+		"nin:10108012345"
+	],
+	[
+		"feide:ola@ntnu.no",
+		"nin:01099898765",
+		"orcid:o.br.nilsson@orcid.org"
+	],
+	[
+		"feide:per@hioa.no",
+		"nin:01057212345"
+	]
+]
+{% endhighlight %}
+
+{% highlight http %}
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8 
+
+[
+	{
+		"primary"   : "piiu:f2759dad-5d19-4e29-b385-2d91d3d77fcb",
+		"secondary" : [
+			"feide:andreas@uninett.no",
+			"nin:10108012345"
+		]
+	},
+	{
+		"primary"   : "piiu:be57a04a-7b50-42e2-a4da-d6aa572b2cf8",
+		"secondary" : [
+			"feide:ola@ntnu.no",
+			"nin:01099898765",
+			"orcid:o.br.nilsson@orcid.org"
+		]
+	},
+	{
+		"primary"   : "piiu:53e44994-1bc1-4d0f-afe1-594d886ad1e6",
+		"secondary" : [
+			"feide:per@hioa.no",
+			"nin:01057212345"
+		]
+	}
+
+]
+{% endhighlight %}
+
+-->
+		</div>
+
+	</div>
+
+</div>
+
+
+
+
+
+

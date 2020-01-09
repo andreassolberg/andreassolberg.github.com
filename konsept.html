@@ -1,0 +1,169 @@
+---
+layout: default
+title: Konsept
+slug: konsept
+---
+
+
+<div class="bs-docs-section ">
+
+	<div class="row">
+		<div class="col-md-12">
+
+			<h1 id="" class="page-header">Konseptet: piiu</h1>
+			
+			<p>Vi innfører en nasjonal sertifisert ID utsteder for personer i utdanningssektoren. Denne utstederen må eksistere på tvers av enkeltinstitusjoner. Denne komponenten har en veldig enkel og viktig oppgave, og holde styr på disse personidentfikatorene og knytte de til andre identfikatorer.</p>
+
+			<img style="margin-bottom: 1em" src="/media/figures/figur1.png" class="img-responsive" />
+
+			<p>Første gang en person etableres i systemet, vil man få opprettet en piiu-ID på følgende format:</p>
+
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 ">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-info"><tt>piiu:f2759dad-5d19-4e29-b385-2d91d3d77fcb</tt></li>
+					</ul>
+				</div>
+			</div>
+
+			<p>Identifikatoren er delt inn i et prefiks <code>piiu</code> med en persons primære identifikator. Identikatoren generes til en tilfeldig, transparent og innholdsløs verdi i <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUIDv4-formatet</a>.</p>
+
+			<p>Når en personidentifikator utstedes lagres en record hos ID-utstederen, sammen med en eller flere sekundær identikator. Alle sekundæridentifikatorer er prefikset med en typeidentifikator. Og hver type har sitt eget verdirom.</p>
+
+			<p>En primæridentifikator opprettes <strong>aldri</strong> uten at det følger med minst en sekundær identifikator.</p>
+
+			<p>Her er et eksempel på et innslag hos ID ustederen, som kobler sammen en primær identifikator med flere sekundær ID-er:</p>
+
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 ">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-info"><tt>piiu:f2759dad-5d19-4e29-b385-2d91d3d77fcb</tt></li>
+						<li class="list-group-item"><tt>feide:andreas@uninett.no</tt></li>
+						<li class="list-group-item"><tt>nin:10108012345</tt></li>
+						<li class="list-group-item"><tt>orcid:solberg@orcid.org</tt></li>
+						<li class="list-group-item"><tt>facebook:12345678</tt></li>
+					</ul>
+				</div>
+			</div>
+
+
+			<h3>Noen egenskaper ved piiu</h3>
+
+			<ul>
+				<li>Vi tror <strong>ikke</strong> det er realistisk at utdanningsinstitusjonene skal i en operasjon endre brukerID-ene som sluttbrukerene forholder seg til i hverdagen. Disse kan fortsette å brukes som før. </li>
+				<li>Istedenfor ønsker vi at <strong>IT-tjenester gradvis går over til å benytte piiu</strong> personidentifikatorer, der det er hensiktsmessig.</li>
+				<li><strong>Ingen personer</strong> skal noen gang behøve å <strong>skrive inn en piiu-ID</strong>. Den skal heller ikke ha noen funksjon hvor den trenger å vises til sluttbrukerene. Det er kun IT systemer som skal forholde seg til denne identifikatoren.</li>
+				<li>En piiu-ID er <strong>knyttet til en person</strong>, og ikke til en brukers tilknytning til en enkeltinstitusjon.</li>
+				<li>En piiu-ID vil kunne identfisere en person om den er kjent, men der personen er kjent ansees ikke dens piiu-ID som hemmelig.</li>
+				<li>Det finnes noen use case hvor man skal representere en person med en identifikator, men ikke behøver å vite hvilken person dette er. Da bør ikke selve piiu-ID-en brukes men en avledet verdi for dette formålet.</li>
+				<li>En piiu-ID verdi er i seg selv transparent og inneholder ingen informasjon.</li>
+				<li>En piiu-ID skal aldri under noen omstendigheter kunne knyttes til mer enn en person.</li>
+				<li>Det skal under optimale omstendigheter <strong>KUN</strong> finnes én piiu-ID for hver person. Men det tillates at dette skjer, og det er innebygde mekanismer i løsningen som vil oppdage dette og sørge for automatisk sammenslåing på en måte hvor dette enkelt kan håndteres av tjenesteleverandører.</li>
+				<li></li>
+			</ul>
+
+
+			<p></p>
+
+
+			<h3>Hva brukes piiu til?</h3>
+
+
+			<ul>
+				<li>piiu utstedes som personidentifikator til tjenesteleverandører i Feide og Connect.</li>
+				<li>Den sentrale ID-ustederen har et oppslagstjeneste API hvor man kan lagre, og slå opp koblinger mellom identfikatorer av forskjellige typer.</li>
+				<li>piiu kan brukes for å representere kobling til personer som referanse ved kommunikasjon mellom systemer som knyttes til personer.</li>
+			</ul>
+
+
+
+			<h3>Utsteding av piiu-ID-er</h3>
+
+			<p>En piiu-ID utstedes ved at noen mater inn et sett med en eller flere sammenkoblede sekundæridentifikatorer, og ingen av disse matcher noen eksisterende innslag.</p>
+
+			<p>La oss si at en bruker autentiserer seg og blir knyttet til et personnummer og et Feidenavn fra Feidekatalogen:</p>
+
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 ">
+					<ul class="list-group">
+						<li class="list-group-item"><tt>feide:andreas@uninett.no</tt></li>
+						<li class="list-group-item"><tt>nin:10108012345</tt></li>
+					</ul>
+				</div>
+			</div>
+
+			<p>Hvis det ikke finnes noen innslag med noen av disse sekundærnøklene, så utstedes en ny piiu-ID og lagres i et innslag sammen med disse sekundær ID-ene:</p>
+
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 ">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-info"><tt>piiu:f2759dad-5d19-4e29-b385-2d91d3d77fcb</tt></li>
+						<li class="list-group-item"><tt>feide:andreas@uninett.no</tt></li>
+						<li class="list-group-item"><tt>nin:10108012345</tt></li>
+					</ul>
+				</div>
+			</div>
+
+
+			<h3>Sammenslåing av piiu-ID-er</h3>
+
+			<p>Vi ser for oss et annet scenario, der det først utstedes en piiu basert på Feidenavn:</p>
+
+			<p><tt>feide:andreas@uninett.no</tt> legges inn og det utstedes: <tt>1de99199-707b-4985-b2bd-c443573beaf3</tt></p>
+
+			<p>Og samme bruker får utstedt en ny piiu basert på fødselsnummer <tt>nin:10108012345</tt>: <tt>4ec54fca-d02d-404f-a3d0-e5ff99f03930</tt></p>
+
+
+			<p>Dersom den samme brukeren senere autentiseres mot både Feidenavn og fødselsnummer, og man ønsker å finne riktig piiu, så vil dette medføre en sammenslåing av to kontoer.</p>
+
+			<p>I dette eksempelet gjør vi et oppslag mot:</p>
+
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 ">
+					<ul class="list-group">
+						<li class="list-group-item"><tt>feide:andreas@uninett.no</tt></li>
+						<li class="list-group-item"><tt>nin:10108012345</tt></li>
+					</ul>
+				</div>
+			</div>
+
+			<p>Og følgende to registrerte innslag vil gi en match: </p>
+
+			<div class="row">
+				<div class="col-md-6">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-info"><tt>piiu:1de99199-707b-4985-b2bd-c443573beaf3</tt></li>
+						<li class="list-group-item"><tt>feide:andreas@uninett.no</tt></li>
+					</ul>
+				</div>
+				<div class="col-md-6">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-info"><tt>piiu:4ec54fca-d02d-404f-a3d0-e5ff99f03930</tt></li>
+						<li class="list-group-item"><tt>nin:10108012345</tt></li>
+					</ul>
+				</div>
+			</div>
+
+			<p>Resultatet vil være at disse to innslagene slåes sammen, hvor den eldste piiu-verdien blir bevart, og den ferskeste blir lagt til som en historisk sekundærverdi til hovedinnslaget:</p>
+
+
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 ">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-info"><tt>piiu:1de99199-707b-4985-b2bd-c443573beaf3</tt></li>
+						<li class="list-group-item"><tt>feide:andreas@uninett.no</tt></li>
+						<li class="list-group-item"><tt>nin:10108012345</tt></li>
+						<li class="list-group-item"><tt>piiu:4ec54fca-d02d-404f-a3d0-e5ff99f03930</tt></li>
+					</ul>
+				</div>
+			</div>
+
+
+
+
+		</div>
+	</div>
+
+
+</div>
+

@@ -1,0 +1,57 @@
+<header class="navbar navbar-default navbar-static-top bs-docs-nav" id="top" role="banner">
+	<div class="container-fluid">
+
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			<a class="navbar-brand" href="/"><img src="/bower_components/uninett-theme/images/UNINETT_logo.svg" alt="Uninett logo" type="image/svg+xml"></a>
+		</div>
+
+		<div class="navbar-department">
+			<a href="/"><div class="department">piiu</div></a>
+		</div>
+
+		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+
+
+			<ul class="nav navbar-nav navbar-right" style="">
+	 <!--     <li data-toggle="tooltip" data-placement="left" title="Not yet available. Stay tuned" ><button  style="margin-top: 8px" class="btn btn-default" href="#">Login</button></li>-->
+				<!-- <li><a href="http://talk.uninettlabs.no">Community</a></li> -->
+
+				<li><a href="http://uninett.no/">UNINETT</a></li>
+				<li><a href="http://feide.no/">Feide</a></li>
+				<li><a href="http://dataporten.no/">Dataporten</a></li>
+				<li style="width: 3em"><a href="">&nbsp;</a></li>
+			</ul>
+
+
+			<ul class="nav navbar-nav">
+
+
+				<li{% if page.slug == "bakgrunn" %} class="active"{% endif %}>
+					<a href="/bakgrunn/">Bakgrunn</a>
+				</li>
+
+				<li{% if page.slug == "konsept" %} class="active"{% endif %}>
+					<a href="/konsept/">Konsept</a>
+				</li>
+
+
+				<li{% if page.slug == "datamodell" %} class="active"{% endif %}>
+					<a href="/datamodell/">Datamodell</a>
+				</li>
+
+				<li{% if page.slug == "protokoll" %} class="active"{% endif %}>
+					<a href="/protokoll/">Protokoll</a>
+				</li>
+
+				<!-- <li{% if page.slug == "openid" %} class="active"{% endif %}>
+					<a target="" href="/openid/">OpenID Connect</a>
+				</li> -->
+
+
+			</ul>
+
+
+		</nav>
+	</div>
+</header>
